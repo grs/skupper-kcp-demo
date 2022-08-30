@@ -22,7 +22,7 @@ kubectl --kubeconfig cluster-1.kubeconfig apply -f skupper-crds.yaml
 kubectl --kubeconfig cluster-1.kubeconfig apply -f skupper-site-controller.yaml
 ```
 
-and
+   and
 
 ```
 kubectl --kubeconfig cluster-2.kubeconfig apply -f skupper-crds.yaml
@@ -56,19 +56,20 @@ KUBECONFIG=.kcp/admin.kubeconfig kubectl kcp workload sync cluster-2 --syncer-im
 
 6. Set up locations and placements in KCP workspace.
 
-   a) label the synctarget CRs, e.g.
+   a. label the synctarget CRs, e.g.
 
 ```
 kubectl --kubeconfig ./.kcp/admin.kubeconfig  label synctarget/cluster-1 category=one
 kubectl --kubeconfig ./.kcp/admin.kubeconfig  label synctarget/cluster-2 category=two
 ```
-   b) create new locations and placements, e.g.
+
+   b. create new locations and placements, e.g.
 
 ```
 kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f locations.yaml
 kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f placements.yaml
 ```
-   c) delete the default location and placement, e.g.
+   c. delete the default location and placement, e.g.
 
 ```
 kubectl --kubeconfig ./.kcp/admin.kubeconfig delete location default
