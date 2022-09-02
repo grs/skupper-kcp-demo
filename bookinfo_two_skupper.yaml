@@ -3,7 +3,16 @@
 # Skupper resources
 #####################################################################################################
 apiVersion: skupper.io/v1alpha1
-kind: IngressBinding
+kind: RequiredService
+metadata:
+  name: ratings
+spec:
+  ports:
+  - port: 9080
+    name: http
+---
+apiVersion: skupper.io/v1alpha1
+kind: ProvidedService
 metadata:
   name: details
 spec:
@@ -12,18 +21,9 @@ spec:
     name: http
 ---
 apiVersion: skupper.io/v1alpha1
-kind: IngressBinding
+kind: ProvidedService
 metadata:
   name: reviews
-spec:
-  ports:
-  - port: 9080
-    name: http
----
-apiVersion: skupper.io/v1alpha1
-kind: EgressBinding
-metadata:
-  name: ratings
 spec:
   ports:
   - port: 9080

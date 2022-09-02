@@ -45,13 +45,13 @@ KUBECONFIG=.kcp/admin.kubeconfig kubectl workspaces create skupper-demo --enter
 5. Set up syncers for each cluster to that workspace.
 
 ```
-KUBECONFIG=.kcp/admin.kubeconfig kubectl kcp workload sync cluster-1 --syncer-image ghcr.io/kcp-dev/kcp/syncer:release-0.7 --resources=services,sites.skupper.io,ingressbindings.skupper.io,egressbindings.skupper.io -o - | kubectl --kubeconfig ./cluster-1.kubeconfig apply -f -
+KUBECONFIG=.kcp/admin.kubeconfig kubectl kcp workload sync cluster-1 --syncer-image ghcr.io/kcp-dev/kcp/syncer:release-0.7 --resources=services,sites.skupper.io,requiredservices.skupper.io,providedservices.skupper.io -o - | kubectl --kubeconfig ./cluster-1.kubeconfig apply -f -
 ```
 
 and
 
 ```
-KUBECONFIG=.kcp/admin.kubeconfig kubectl kcp workload sync cluster-2 --syncer-image ghcr.io/kcp-dev/kcp/syncer:release-0.7 --resources=services,sites.skupper.io,ingressbindings.skupper.io,egressbindings.skupper.io -o - | kubectl --kubeconfig ./cluster-2.kubeconfig apply -f -
+KUBECONFIG=.kcp/admin.kubeconfig kubectl kcp workload sync cluster-2 --syncer-image ghcr.io/kcp-dev/kcp/syncer:release-0.7 --resources=services,sites.skupper.io,requiredservices.skupper.io,providedservices.skupper.io -o - | kubectl --kubeconfig ./cluster-2.kubeconfig apply -f -
 ```
 
 6. Set up locations and placements in KCP workspace.
@@ -96,7 +96,7 @@ kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f bookinfo_one.yaml
 kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f bookinfo_two.yaml
 ```
 
-9. Create IngressBinding and EgressBinding resources as needed to
+9. Create RequiredService and ProvidedService resources as needed to
    expose services from one location to another.
 
    E.g. continuing with the bookinfo example, ensure that the ratings

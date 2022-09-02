@@ -3,7 +3,7 @@
 # Skupper resources
 #####################################################################################################
 apiVersion: skupper.io/v1alpha1
-kind: EgressBinding
+kind: RequiredService
 metadata:
   name: details
 spec:
@@ -12,7 +12,7 @@ spec:
     name: http
 ---
 apiVersion: skupper.io/v1alpha1
-kind: EgressBinding
+kind: RequiredService
 metadata:
   name: reviews
 spec:
@@ -21,7 +21,7 @@ spec:
     name: http
 ---
 apiVersion: skupper.io/v1alpha1
-kind: IngressBinding
+kind: ProvidedService
 metadata:
   name: ratings
 spec:

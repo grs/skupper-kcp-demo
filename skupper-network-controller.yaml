@@ -37,8 +37,8 @@ rules:
 - apiGroups:
   - skupper.io
   resources:
-  - ingressbindings
-  - egressbindings
+  - requiredservices
+  - providedservices
   - sites
   verbs:
   - get
@@ -80,4 +80,4 @@ spec:
       serviceAccountName: skupper-network-controller
       containers:
       - name: network-controller
-        image: quay.io/gordons/network-controller:kcp-demo
+        image: quay.io/gordons/network-controller:kcp-demo-2

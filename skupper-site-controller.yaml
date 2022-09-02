@@ -97,8 +97,8 @@ rules:
 - apiGroups:
   - skupper.io
   resources:
-  - ingressbindings
-  - egressbindings
+  - requiredservices
+  - providedservices
   - sites
   - sites/status
   verbs:
@@ -142,4 +142,4 @@ spec:
       serviceAccountName: skupper-site-controller
       containers:
       - name: site-controller
-        image: quay.io/gordons/site-controller-v2:kcp-demo
+        image: quay.io/gordons/site-controller-v2:kcp-demo-2

@@ -1,92 +1,88 @@
----
 ##################################################################################################
-# Productpage services
+# Details service
 ##################################################################################################
 apiVersion: v1
 kind: Service
 metadata:
-  name: productpage
+  name: details
   labels:
-    app: productpage
-    service: productpage
+    app: details
+    service: details
 spec:
   ports:
   - port: 9080
     name: http
     protocol: TCP
   selector:
-    app: productpage
-  type: LoadBalancer
+    app: details
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: productpage-v1
+  name: details-v1
   labels:
-    app: productpage
+    app: details
     version: v1
-    state.internal.workloads.kcp.dev/cluster-1: Sync
-    state.internal.workloads.kcp.dev/cluster-2: Sync
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: productpage
+      app: details
       version: v1
   template:
     metadata:
       labels:
-        app: productpage
+        app: details
         version: v1
     spec:
       containers:
-      - name: productpage
-        image: docker.io/maistra/examples-bookinfo-productpage-v1:0.12.0
+      - name: details
+        image: docker.io/maistra/examples-bookinfo-details-v1:0.12.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
           protocol: TCP
 ---
 ##################################################################################################
-# Ratings service
+# Reviews service
 ##################################################################################################
 apiVersion: v1
 kind: Service
 metadata:
-  name: ratings
+  name: reviews
   labels:
-    app: ratings
-    service: ratings
+    app: reviews
+    service: reviews
 spec:
   ports:
   - port: 9080
     name: http
     protocol: TCP
   selector:
-    app: ratings
+    app: reviews
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ratings-v1
+  name: reviews-v3
   labels:
-    app: ratings
-    version: v1
+    app: reviews
+    version: v3
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ratings
-      version: v1
+      app: reviews
+      version: v3
   template:
     metadata:
       labels:
-        app: ratings
-        version: v1
+        app: reviews
+        version: v3
     spec:
       containers:
-      - name: ratings
-        image: docker.io/maistra/examples-bookinfo-ratings-v1:0.12.0
+      - name: reviews
+        image: docker.io/maistra/examples-bookinfo-reviews-v3:0.12.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
