@@ -2,6 +2,8 @@
 
 Non-transparent multi-cluster with skupper and kcp
 
+https://github.com/grs/skupper-kcp-demo/blob/main/skupper-kcp-demo.mp4?raw=true
+
 ## Using Skupper to communicate between workloads placed in different locations with KCP
 
 1. Configure clusters to run workloads on. These must be able to
