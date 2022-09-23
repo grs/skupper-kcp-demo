@@ -94,8 +94,8 @@ kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f skupper-network-controller
 
 ```
 kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f namespaces.yaml
-kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f bookinfo_one.yaml
-kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f bookinfo_two.yaml
+kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f bookinfo_one.yaml -n one
+kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f bookinfo_two.yaml -n two
 ```
 
 9. Create RequiredService and ProvidedService resources as needed to
@@ -107,6 +107,6 @@ kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f bookinfo_two.yaml
    can be seen by the productpage service on cluster-2:
 
 ```
-kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f bookinfo_one_skupper.yaml
-kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f bookinfo_two_skupper.yaml
+kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f bookinfo_one_skupper.yaml -n one
+kubectl --kubeconfig ./.kcp/admin.kubeconfig apply -f bookinfo_two_skupper.yaml -n two
 ```
